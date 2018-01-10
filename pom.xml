@@ -30,7 +30,7 @@
         <yaml.version>1.17</yaml.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <springboot.version>1.5.3.RELEASE</springboot.version>
-        <rocketmq.version>4.1.0-incubating</rocketmq.version>
+        <rocketmq.version>4.2.0</rocketmq.version>
 
         <jacoco.version>0.7.9</jacoco.version>
     </properties>

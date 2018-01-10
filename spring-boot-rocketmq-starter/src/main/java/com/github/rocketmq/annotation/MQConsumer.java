@@ -1,6 +1,5 @@
 package com.github.rocketmq.annotation;
 
-import com.maihaoche.starter.mq.base.MessageExtConst;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;

@@ -1,10 +1,9 @@
 package com.github.rocketmq.trace.dispatch.impl;
 
-import com.maihaoche.starter.mq.trace.common.OnsTraceConstants;
-import com.maihaoche.starter.mq.trace.common.OnsTraceContext;
-import com.maihaoche.starter.mq.trace.common.OnsTraceDataEncoder;
-import com.maihaoche.starter.mq.trace.common.OnsTraceTransferBean;
-import com.maihaoche.starter.mq.trace.dispatch.AsyncAppender;
+
+import com.github.rocketmq.trace.common.OnsTraceConstants;
+import com.github.rocketmq.trace.common.OnsTraceTransferBean;
+import com.github.rocketmq.trace.dispatch.AsyncAppender;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.log.ClientLogger;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
@@ -70,7 +69,6 @@ public class AsyncTraceAppender extends AsyncAppender {
      *
      * @param context
      */
-    @Override
     public void append(Object context) {
         OnsTraceContext traceContext = (OnsTraceContext) context;
         if (traceContext == null) {

@@ -1,8 +1,6 @@
 package com.github.rocketmq.base;
 
-import com.google.gson.Gson;
-import com.maihaoche.starter.mq.MQException;
-import com.maihaoche.starter.mq.annotation.MQKey;
+import com.alibaba.fastjson.JSON;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -27,27 +25,15 @@ public abstract class AbstractMQProducer {
 
     private static final String[] DELAY_ARRAY = "1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h".split(" ");
 
-    private static Gson gson = new Gson();
 
     private MessageQueueSelector messageQueueSelector = new SelectMessageQueueByHash();
 
     public AbstractMQProducer() {
     }
 
+    @Setter
+    @Getter
     private String tag;
-
-    /**
-     * 重写此方法,或者通过setter方法注入tag设置producer bean 级别的tag
-     *
-     * @return tag
-     */
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
 
     @Setter
     @Getter
@@ -87,7 +73,7 @@ public abstract class AbstractMQProducer {
         } catch (Exception e) {
             log.error("parse key error : {}" , e.getMessage());
         }
-        String str = gson.toJson(msgObj);
+        String str = JSON.toJSONString(msgObj);
         if(StringUtils.isEmpty(topic)) {
             if(StringUtils.isEmpty(getTopic())) {
                 throw new RuntimeException("no topic defined to send this message");

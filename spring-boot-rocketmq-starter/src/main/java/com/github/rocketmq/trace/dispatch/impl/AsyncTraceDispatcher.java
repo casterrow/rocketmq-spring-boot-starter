@@ -1,8 +1,7 @@
 package com.github.rocketmq.trace.dispatch.impl;
 
-import com.maihaoche.starter.mq.trace.common.OnsTraceConstants;
-import com.maihaoche.starter.mq.trace.dispatch.AsyncAppender;
-import com.maihaoche.starter.mq.trace.dispatch.AsyncDispatcher;
+
+import com.github.rocketmq.trace.dispatch.AsyncDispatcher;
 import org.apache.rocketmq.client.log.ClientLogger;
 import org.slf4j.Logger;
 
@@ -67,7 +66,6 @@ public class AsyncTraceDispatcher extends AsyncDispatcher {
     }
 
 
-    @Override
     public void start(AsyncAppender appender, String workerName) {
         this.appender = appender;
         this.workerName = workerName;

@@ -1,12 +1,6 @@
 package com.github.rocketmq.config;
 
-import com.maihaoche.starter.mq.annotation.MQConsumer;
-import com.maihaoche.starter.mq.base.AbstractMQPushConsumer;
-import com.maihaoche.starter.mq.base.MessageExtConst;
-import com.maihaoche.starter.mq.trace.common.OnsTraceConstants;
-import com.maihaoche.starter.mq.trace.dispatch.impl.AsyncTraceAppender;
-import com.maihaoche.starter.mq.trace.dispatch.impl.AsyncTraceDispatcher;
-import com.maihaoche.starter.mq.trace.tracehook.OnsConsumeMessageHookImpl;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;

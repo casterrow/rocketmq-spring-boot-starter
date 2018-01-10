@@ -1,7 +1,6 @@
 package com.github.rocketmq.base;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.springframework.util.Assert;
@@ -19,8 +18,6 @@ import java.util.Map;
 @Slf4j
 public abstract class AbstractMQConsumer<T> {
 
-    protected static Gson gson = new Gson();
-
     /**
      * 反序列化解析消息
      *
@@ -33,12 +30,7 @@ public abstract class AbstractMQConsumer<T> {
         }
         final Type type = this.getMessageType();
         if (type instanceof Class) {
-            try {
-                T data = gson.fromJson(new String(message.getBody()), type);
-                return data;
-            } catch (JsonSyntaxException e) {
-                log.error("parse message json fail : {}", e.getMessage());
-            }
+            return JSON.parseObject(new String(message.getBody()), type);
         } else {
             log.warn("Parse msg error. {}", message);
         }
