@@ -9,12 +9,13 @@ import java.util.Enumeration;
  *
  */
 public class MixUtils {
+
     public static String getLocalAddress() {
         try {
             // 遍历网卡，查找一个非回路ip地址并返回
             Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces();
-            ArrayList<String> ipv4Result = new ArrayList<String>();
-            ArrayList<String> ipv6Result = new ArrayList<String>();
+            ArrayList<String> ipv4Result = new ArrayList<>();
+            ArrayList<String> ipv6Result = new ArrayList<>();
             while (enumeration.hasMoreElements()) {
                 final NetworkInterface networkInterface = enumeration.nextElement();
                 final Enumeration<InetAddress> en = networkInterface.getInetAddresses();
@@ -58,10 +59,6 @@ public class MixUtils {
         catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        finally {
-
-        }
-
         return null;
     }
 

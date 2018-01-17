@@ -1,8 +1,6 @@
 package com.github.rocketmq.base;
 
-/**
- * Created by suclogger on 2017/11/8.
- */
+
 public class MessageExtConst {
 
     /**

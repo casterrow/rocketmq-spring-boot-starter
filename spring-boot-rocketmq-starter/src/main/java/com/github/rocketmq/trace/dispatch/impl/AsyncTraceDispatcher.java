@@ -1,6 +1,8 @@
 package com.github.rocketmq.trace.dispatch.impl;
 
 
+import com.github.rocketmq.trace.common.OnsTraceConstants;
+import com.github.rocketmq.trace.dispatch.AsyncAppender;
 import com.github.rocketmq.trace.dispatch.AsyncDispatcher;
 import org.apache.rocketmq.client.log.ClientLogger;
 import org.slf4j.Logger;
@@ -17,7 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 异步提交消息轨迹等数据
  */
-public class AsyncTraceDispatcher extends AsyncDispatcher {
+public class AsyncTraceDispatcher implements AsyncDispatcher {
     private final static Logger clientlog = ClientLogger.getLog();
     // RingBuffer 实现，size 必须为 2 的 n 次方
     private final Object[] entries;

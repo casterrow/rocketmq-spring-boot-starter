@@ -2,6 +2,10 @@ package com.github.rocketmq.trace.tracehook;
 
 
 
+import com.github.rocketmq.trace.common.OnsTraceBean;
+import com.github.rocketmq.trace.common.OnsTraceContext;
+import com.github.rocketmq.trace.common.OnsTraceType;
+import com.github.rocketmq.trace.dispatch.AsyncDispatcher;
 import org.apache.rocketmq.client.hook.ConsumeMessageContext;
 import org.apache.rocketmq.client.hook.ConsumeMessageHook;
 import org.apache.rocketmq.common.message.MessageExt;
@@ -40,7 +44,7 @@ public class OnsConsumeMessageHookImpl implements ConsumeMessageHook {
         context.setMqTraceContext(onsTraceContext);
         onsTraceContext.setTraceType(OnsTraceType.SubBefore);//
         onsTraceContext.setGroupName(context.getConsumerGroup());//
-        List<OnsTraceBean> beans = new ArrayList<OnsTraceBean>();
+        List<OnsTraceBean> beans = new ArrayList<>();
         for (MessageExt msg : context.getMsgList()) {
             if (msg == null) {
                 continue;
@@ -50,12 +54,6 @@ public class OnsConsumeMessageHookImpl implements ConsumeMessageHook {
             traceBean.setMsgId(msg.getMsgId());//
             traceBean.setTags(msg.getTags());//
             traceBean.setKeys(msg.getKeys());//
-//            InetSocketAddress host;
-//            // host = (InetSocketAddress) msg.getBornHost();
-//            // traceBean.setClientHost(host.getHostName());//
-//
-//            host = (InetSocketAddress) msg.getStoreHost();
-//            traceBean.setStoreHost(host.getHostName());//
             traceBean.setStoreTime(msg.getStoreTimestamp());//
             traceBean.setBodyLength(msg.getStoreSize());//
             traceBean.setRetryTimes(msg.getReconsumeTimes());//

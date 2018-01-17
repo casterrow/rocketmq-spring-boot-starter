@@ -1,0 +1,18 @@
+
+server:
+  port: 8080
+  context-path: /rocketmq
+
+spring:
+  application:
+    name: rocketmq-console
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+
+
+
+

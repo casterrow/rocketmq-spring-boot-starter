@@ -77,7 +77,6 @@ public abstract class AbstractMQConsumer<T> {
         } else {
             // 如果没有定义泛型，解析为Object
             return Object.class;
-//            throw new RuntimeException("Unkown parameterized type.");
         }
     }
 }

@@ -1,7 +1,8 @@
 package com.github.rocketmq.config;
 
-import com.maihaoche.starter.mq.annotation.MQProducer;
-import com.maihaoche.starter.mq.base.AbstractMQProducer;
+
+import com.github.rocketmq.annotation.MQProducer;
+import com.github.rocketmq.base.AbstractMQProducer;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -14,10 +15,7 @@ import org.springframework.util.CollectionUtils;
 import javax.annotation.PostConstruct;
 import java.util.Map;
 
-/**
- * Created by yipin on 2017/6/29.
- * 自动装配消息生产者
- */
+
 @Slf4j
 @Configuration
 @ConditionalOnBean(MQBaseAutoConfiguration.class)

@@ -13,10 +13,7 @@ import org.apache.rocketmq.common.message.MessageExt;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by yipin on 2017/6/27.
- * RocketMQ的消费者(Push模式)处理消息的接口
- */
+
 @Slf4j
 public abstract class AbstractMQPushConsumer<T> extends AbstractMQConsumer<T>{
 

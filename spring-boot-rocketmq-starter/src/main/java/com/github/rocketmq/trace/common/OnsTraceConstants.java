@@ -23,7 +23,7 @@ public class OnsTraceConstants {
     // producer名称
     public static final String groupName = "_INNER_TRACE_PRODUCER";
     // topic
-    public static final String traceTopic = "MQ_TRACE_DATA";
+    public static final String TRACE_TOPIC = "MQ_TRACE_DATA";
 
     public static char CONTENT_SPLITOR = (char) 1;
     public static char FIELD_SPLITOR = (char) 2;

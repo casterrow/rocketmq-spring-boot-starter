@@ -1,7 +1,7 @@
 package com.github.rocketmq.trace.common;
 
 
-import com.maihaoche.starter.mq.trace.utils.MixUtils;
+import com.github.rocketmq.trace.utils.MixUtils;
 import org.apache.rocketmq.common.message.MessageType;
 
 /**

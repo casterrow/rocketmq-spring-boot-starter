@@ -1,6 +1,8 @@
 package com.github.rocketmq.base;
 
 import com.alibaba.fastjson.JSON;
+import com.github.rocketmq.MQException;
+import com.github.rocketmq.annotation.MQKey;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -39,20 +41,9 @@ public abstract class AbstractMQProducer {
     @Getter
     private DefaultMQProducer producer;
 
+    @Setter
+    @Getter
     private String topic;
-
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
-
-    /**
-     * 重写此方法定义bean级别的topic，如果有返回有效topic，可以直接使用 sendMessage() 方法发送消息
-     *
-     * @return topic
-     */
-    public String getTopic() {
-        return this.topic;
-    }
 
     private Message genMessage(String topic, String tag, Object msgObj) {
         String messageKey= "";

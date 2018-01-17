@@ -2,6 +2,8 @@ package com.github.rocketmq.trace.dispatch.impl;
 
 
 import com.github.rocketmq.trace.common.OnsTraceConstants;
+import com.github.rocketmq.trace.common.OnsTraceContext;
+import com.github.rocketmq.trace.common.OnsTraceDataEncoder;
 import com.github.rocketmq.trace.common.OnsTraceTransferBean;
 import com.github.rocketmq.trace.dispatch.AsyncAppender;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -16,10 +18,9 @@ import org.slf4j.Logger;
 import java.util.*;
 
 
-/**
- * Created by alvin on 16-3-7.
- */
-public class AsyncTraceAppender extends AsyncAppender {
+
+public class AsyncTraceAppender implements AsyncAppender {
+
     private final static Logger clientlog = ClientLogger.getLog();
     /**
      * batch大小
@@ -42,7 +43,7 @@ public class AsyncTraceAppender extends AsyncAppender {
      * @throws MQClientException
      */
     public AsyncTraceAppender(Properties properties) throws MQClientException {
-        transDataList = new ArrayList<OnsTraceTransferBean>();
+        transDataList = new ArrayList<>();
         traceProducer = new DefaultMQProducer();
 
         this.traceProducer.setProducerGroup(OnsTraceConstants.groupName);
@@ -121,7 +122,7 @@ public class AsyncTraceAppender extends AsyncAppender {
      *            本批次的轨迹数据
      */
     public void sendTraceDataByMQ(Set<String> keySet, String data) {
-        String topic = OnsTraceConstants.traceTopic;
+        String topic = OnsTraceConstants.TRACE_TOPIC;
         final Message message = new Message(topic, data.getBytes());
         message.setKeys(keySet);
         try {

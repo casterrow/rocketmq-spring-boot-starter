@@ -1,6 +1,13 @@
 package com.github.rocketmq.config;
 
 
+import com.github.rocketmq.annotation.MQConsumer;
+import com.github.rocketmq.base.AbstractMQPushConsumer;
+import com.github.rocketmq.base.MessageExtConst;
+import com.github.rocketmq.trace.common.OnsTraceConstants;
+import com.github.rocketmq.trace.dispatch.impl.AsyncTraceAppender;
+import com.github.rocketmq.trace.dispatch.impl.AsyncTraceDispatcher;
+import com.github.rocketmq.trace.tracehook.OnsConsumeMessageHookImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;

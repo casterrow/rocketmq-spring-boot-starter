@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * Created by alvin on 16-3-10.
- */
+
 public class OnsTraceDataEncoder {
     /**
      * 从轨迹数据字符串中解析出traceContext列表
@@ -18,7 +16,7 @@ public class OnsTraceDataEncoder {
      * @return
      */
     public static List<OnsTraceContext> decoderFromTraceDataString(String traceData) {
-        List<OnsTraceContext> resList = new ArrayList<OnsTraceContext>();
+        List<OnsTraceContext> resList = new ArrayList<>();
         if (traceData == null || traceData.length() <= 0) {
             return resList;
         }
@@ -98,24 +96,6 @@ public class OnsTraceDataEncoder {
         OnsTraceTransferBean transferBean = new OnsTraceTransferBean();
         StringBuilder sb = new StringBuilder(256);
         switch (ctx.getTraceType()) {
-//        case Pub: {
-//            OnsTraceBean bean = ctx.getTraceBeans().get(0);
-//            sb.append(ctx.getTraceType()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(ctx.getTimeStamp()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(ctx.getRegionId()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(ctx.getGroupName()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(bean.getTopic()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(bean.getMsgId()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(bean.getTags()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(bean.getKeys()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(bean.getStoreHost()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(bean.getBodyLength()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(ctx.getCostTime()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(bean.getMsgType().ordinal()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(bean.getOffsetMsgId()).append(OnsTraceConstants.CONTENT_SPLITOR)//
-//                .append(ctx.isSuccess()).append(OnsTraceConstants.FIELD_SPLITOR);
-//        }
-//            break;
         case SubBefore: {
             for (OnsTraceBean bean : ctx.getTraceBeans()) {
                 sb.append(ctx.getTraceType()).append(OnsTraceConstants.CONTENT_SPLITOR)//
