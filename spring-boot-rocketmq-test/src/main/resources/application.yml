@@ -1,0 +1,15 @@
+
+server:
+  port: 8080
+  context-path: /rocketmq
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 400
+    min-spare-threads: 100
+  connection-timeout: 5000
+
+
+
+
+
+

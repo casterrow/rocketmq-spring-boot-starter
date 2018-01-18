@@ -26,7 +26,7 @@ import java.util.Set;
  */
 public class ProducerTest {
 
-    private static final Map<MessageQueue, Long> OFFSE_TABLE = new HashMap<MessageQueue, Long>();
+    private static final Map<MessageQueue, Long> OFFSET_TABLE = new HashMap<>();
 
     @Test
     public void testSyncSend() throws Exception {
@@ -132,15 +132,15 @@ public class ProducerTest {
 
     }
 
-    private static long getMessageQueueOffset(MessageQueue mq) {
-        Long offset = OFFSE_TABLE.get(mq);
-        if (offset != null)
+    private static long getMessageQueueOffset(MessageQueue queue) {
+        Long offset = OFFSET_TABLE.get(queue);
+        if (offset != null) {
             return offset;
-
+        }
         return 0;
     }
 
-    private static void putMessageQueueOffset(MessageQueue mq, long offset) {
-        OFFSE_TABLE.put(mq, offset);
+    private static void putMessageQueueOffset(MessageQueue queue, long offset) {
+        OFFSET_TABLE.put(queue, offset);
     }
 }
