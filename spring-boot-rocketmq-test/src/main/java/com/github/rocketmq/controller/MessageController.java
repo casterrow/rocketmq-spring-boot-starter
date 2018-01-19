@@ -29,7 +29,7 @@ public class MessageController {
 
         SendResult result = producer.send(message);
 
-        System.out.println("result: " + result);
+        System.out.println("pull result: " + result);
     }
 
     @PostMapping("/syncSendForPush")
@@ -41,6 +41,18 @@ public class MessageController {
 
         SendResult result = producer.send(message);
 
-        System.out.println("result: " + result);
+        System.out.println("push result: " + result);
+    }
+
+    @PostMapping("/syncSendForTask")
+    public void syncSendForTask(@RequestBody Product product) throws Exception {
+        Message message = new Message();
+        message.setTopic("TASK_TEST_TOPIC");
+        message.setTags(product.getTags());
+        message.setBody(JSON.toJSONBytes(product));
+
+        SendResult result = producer.send(message);
+
+        System.out.println("task result: " + result);
     }
 }

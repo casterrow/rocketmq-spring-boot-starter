@@ -127,10 +127,4 @@
             <artifactId>jackson-jaxrs-json-provider</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
 </project>

@@ -2,8 +2,10 @@ package com.github.rocketmq.config;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPullConsumer;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
+import org.apache.rocketmq.client.consumer.MQPullConsumerScheduleService;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,5 +45,17 @@ public class RocketMQConfiguration {
         pullConsumer.setConsumerGroup("pull_consumer_group");
         pullConsumer.setVipChannelEnabled(false);
         return pullConsumer;
+    }
+
+    @Bean
+    public MQPullConsumerScheduleService scheduleService() {
+        DefaultMQPullConsumer pullConsumer = new DefaultMQPullConsumer();
+        pullConsumer.setNamesrvAddr("192.168.33.10:9876");
+        pullConsumer.setConsumerGroup("schedule_consumer_group");
+        pullConsumer.setVipChannelEnabled(false);
+        MQPullConsumerScheduleService scheduleService = new MQPullConsumerScheduleService("schedule_consumer_group");
+        scheduleService.setMessageModel(MessageModel.CLUSTERING);
+        scheduleService.setDefaultMQPullConsumer(pullConsumer);
+        return scheduleService;
     }
 }
